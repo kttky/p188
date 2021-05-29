@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var num : Int = 0
-    
-    var body: some View {
-        HStack{
-            //数値の表示
-            Text("\(num)")
-                .font(.system(size:50))
-            //カウントアップ
-            Button(action: {num += 1},label :{
-                    Text("Tap").font(.largeTitle)
-            })
+   let janken = ["グー","チョキ","パー"]
+@State var te = ""
+    var body : some View{
+        VStack{
+            //ボタンを作る
+            Button("じゃんけん"){
+                te = janken.randomElement()!
+            }
+            .foregroundColor(.white)
+            .background(
+            Capsule()
+                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .frame(width: 120, height:40)
+            )
+            //結果の表示
+            Text(te)
+                .font(.largeTitle)
+                .padding()
+            }
         }
-        Text("Hello, world!")
-            .padding()
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
