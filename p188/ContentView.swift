@@ -9,23 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
    let janken = ["グー","チョキ","パー"]
-@State var te = ""
+   let janken2 = ["グー","チョキ","パー"]
+@State var te1 = ""
+@State var te2 = ""
+    
     var body : some View{
         VStack{
-            //ボタンを作る
-            Button("じゃんけん"){
-                te = janken.randomElement()!
+            Button("じゃんけん1"){
+                if (te1==""){
+                    te1 = janken.randomElement()!}
+                else{ te1 = ""}
             }
-            .foregroundColor(.white)
-            .background(
-            Capsule()
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                .frame(width: 120, height:40)
-            )
-            //結果の表示
-            Text(te)
-                .font(.largeTitle)
-                .padding()
+            Button("じゃんけん2"){
+                if (te2==""){
+                    te2 = janken2.randomElement()!}
+                else{ te2 = ""}
+            }
+        if (te1 == te2) {
+            Text("aiko")}
+            else if(te1 != te2){
+                Text("勝敗がついた")
+            } else {
+                Text("後出しやん")
+                
+            }
             }
         }
     }
@@ -35,3 +42,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
